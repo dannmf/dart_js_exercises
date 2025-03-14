@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+        input:invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="registroForm">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+            <span class="error" id="nomeError">O nome não pode estar vazio.</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span class="error" id="emailError">Insira um email válido.</span>
+        </div>
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha">
+            <span class="error" id="senhaError">A senha deve ter pelo menos 6 caracteres.</span>
+        </div>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('registroForm');
+        const nomeInput = document.getElementById('nome');
+        const emailInput = document.getElementById('email');
+        const senhaInput = document.getElementById('senha');
+        const nomeError = document.getElementById('nomeError');
+        const emailError = document.getElementById('emailError');
+        const senhaError = document.getElementById('senhaError');
+
+        // Função para validar o nome
+        function validarNome() {
+            if (nomeInput.value.trim() === '') {
+                nomeError.style.display = 'block';
+                return false;
+            } else {
+                nomeError.style.display = 'none';
+                return true;
+            }
+        }
+
+        // Função para validar o email
+        function validarEmail() {
+            if (!emailRegex.test(emailInput.value)) {
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+        function validarSenha() {
+            if (senhaInput.value.length < 6) {
+                senhaError.style.display = 'block';
+                return false;
+            } else {
+                senhaError.style.display = 'none';
+                return true;
+            }
+        }
+
+        // Validação em tempo real
+        nomeInput.addEventListener('input', validarNome);
+        emailInput.addEventListener('input', validarEmail);
+        senhaInput.addEventListener('input', validarSenha);
+
+        // Validação ao submeter o formulário
+        form.addEventListener('submit', function (e) {
+            const isNomeValido = validarNome();
+            const isEmailValido = validarEmail();
+            const isSenhaValida = validarSenha();
+
+            if (!isNomeValido || !isEmailValido || !isSenhaValida) {
+                e.preventDefault(); // Impede o envio do formulário
+            }
+        });
+    </script>
+</body>
+</html>

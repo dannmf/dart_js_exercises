@@ -1,0 +1,71 @@
+
+        /* Fonte Padrão */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Centralizar Conteúdo */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+
+        /* Botão de Alternância */
+        .theme-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .theme-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Modo Escuro */
+        body.dark-theme {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .dark-theme .container {
+            background-color: #2c2c2c;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-theme .theme-button {
+            background-color: #ff9800;
+            color: #1e1e1e;
+        }
+
+        .dark-theme .theme-button:hover {
+            background-color: #e68900;
+        }
+    

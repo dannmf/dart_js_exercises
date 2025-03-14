@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #listaTarefas {
+            list-style-type: none;
+            padding: 0;
+        }
+        #listaTarefas li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .remover {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="novaTarefa" placeholder="Digite uma nova tarefa">
+    <button id="adicionarTarefa">Adicionar</button>
+    <ul id="listaTarefas"></ul>
+
+    <script>
+        const inputTarefa = document.getElementById('novaTarefa');
+        const botaoAdicionar = document.getElementById('adicionarTarefa');
+        const listaTarefas = document.getElementById('listaTarefas');
+
+        // Função para adicionar tarefa
+        function adicionarTarefa() {
+            const texto = inputTarefa.value.trim();
+            if (texto !== '') {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${texto}
+                    <span class="remover">X</span>
+                `;
+                listaTarefas.appendChild(li);
+                inputTarefa.value = ''; // Limpa o campo de input
+
+                // Adiciona evento de remoção
+                li.querySelector('.remover').addEventListener('click', function () {
+                    li.remove();
+                });
+            }
+        }
+
+    
+        botaoAdicionar.addEventListener('click', adicionarTarefa);
+        
+        inputTarefa.addEventListener('keyup', function (e) {
+            if (e.key === 'Enter') {
+                adicionarTarefa();
+            }
+        });
+    </script>
+</body>
+</html>
